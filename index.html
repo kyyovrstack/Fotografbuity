@@ -10,6 +10,8 @@
             --text-color: #f3f3f3;
             --muted-color: #888888;
             --accent-color: #ffffff;
+            --whatsapp-color: #25D366;
+            --telegram-color: #229ED9;
             --transition: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -152,7 +154,7 @@
             border-radius: 6px;
             cursor: pointer;
             background: #151515;
-            display: none; /* Скрыты по умолчанию, включаются через JS */
+            display: none;
         }
 
         .portfolio-item.visible {
@@ -195,7 +197,7 @@
             text-transform: uppercase;
         }
 
-        /* Подвал с номером телефона */
+        /* Подвал с контактами и кнопками */
         footer {
             background: #080808;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -217,19 +219,55 @@
         }
 
         .big-phone {
-            display: inline-block;
-            font-size: clamp(24px, 3vw, 36px);
+            display: block;
+            font-size: clamp(22px, 3vw, 32px);
             color: var(--text-color);
             text-decoration: none;
             font-weight: 300;
             letter-spacing: 2px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            padding-bottom: 5px;
+            margin-bottom: 35px;
             transition: opacity 0.3s;
         }
 
         .big-phone:hover {
             opacity: 0.7;
+        }
+
+        /* Блок мессенджеров */
+        .messenger-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .msg-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 30px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 0.3s, opacity 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .msg-btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        .whatsapp-btn {
+            background-color: var(--whatsapp-color);
+        }
+
+        .telegram-btn {
+            background-color: var(--telegram-color);
         }
 
         /* Лайтбокс */
@@ -284,7 +322,7 @@
                 padding: 15px 20px;
             }
             .header-phone {
-                display: none; /* прячем мелкую кнопку в шапке на мобилках, снизу будет большая */
+                display: none;
             }
             .hero {
                 padding: 110px 20px 40px 20px;
@@ -298,6 +336,13 @@
             }
             .portfolio-item img {
                 height: 380px;
+            }
+            .messenger-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .msg-btn {
+                width: 100%;
             }
         }
     </style>
@@ -327,7 +372,7 @@
         <button class="cat-btn" onclick="filterCategory('portrait')">Портрет</button>
     </div>
 
-    <!-- Галерея (по 6 фото на каждую категорию) -->
+    <!-- Галерея -->
     <section class="gallery-section">
         <div class="portfolio-grid" id="grid">
             
@@ -438,12 +483,17 @@
         </div>
     </section>
 
-    <!-- Подвал с номером телефона -->
+    <!-- Подвал с номером и мессенджерами -->
     <footer>
         <div class="footer-content">
             <h2>Забронировать съёмку</h2>
-            <p>Свяжитесь со мной любым удобным способом или позвоните напрямую:</p>
+            <p>Свяжитесь со мной любым удобным способом:</p>
             <a href="tel:+79991234567" class="big-phone">+7 (999) 123-45-67</a>
+            
+            <div class="messenger-buttons">
+                <a href="https://wa.me/79991234567" target="_blank" class="msg-btn whatsapp-btn">Написать WhatsApp</a>
+                <a href="https://t.me/username" target="_blank" class="msg-btn telegram-btn">Написать в Telegram</a>
+            </div>
         </div>
     </footer>
 
@@ -454,13 +504,10 @@
     </div>
 
     <script>
-        // Функция фильтрации категорий
         function filterCategory(category) {
-            // Переключаем активную кнопку
             document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Показываем/скрываем нужные фото
             document.querySelectorAll('.portfolio-item').forEach(item => {
                 if (item.classList.contains(category)) {
                     item.classList.add('visible');
@@ -470,22 +517,14 @@
             });
         }
 
-        // При загрузке страницы включаем категорию "Семья" по умолчанию
         window.addEventListener('DOMContentLoaded', () => {
-            filterCategoryInitial('family');
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                if (item.classList.contains('family')) {
+                    item.classList.add('visible');
+                }
+            });
         });
 
-        function filterCategoryInitial(category) {
-            document.querySelectorAll('.portfolio-item').forEach(item => {
-                if (item.classList.contains(category)) {
-                    item.classList.add('visible');
-                } else {
-                    item.classList.remove('visible');
-                }
-            });
-        }
-
-        // Лайтбокс для картинок
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxClose = document.getElementById('lightboxClose');
