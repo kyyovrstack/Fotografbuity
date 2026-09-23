@@ -106,7 +106,7 @@
             line-height: 1.5;
         }
 
-        /* Переключатель категорий (Фильтры) */
+        /* Переключатель категорий */
         .categories {
             display: flex;
             justify-content: center;
@@ -137,7 +137,7 @@
 
         /* Сетка галереи */
         .gallery-section {
-            padding: 0 40px 100px 40px;
+            padding: 0 40px 80px 40px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -197,7 +197,91 @@
             text-transform: uppercase;
         }
 
-        /* Подвал с контактами и кнопками */
+        /* Блок с ценами */
+        .pricing-section {
+            padding: 60px 40px 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 50px;
+            font-family: serif;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .price-card {
+            background: #141414;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .price-card h3 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            font-family: serif;
+        }
+
+        .price-card .price {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+            color: var(--muted-color);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .price-card ul li::before {
+            content: "— ";
+            color: #fff;
+        }
+
+        .price-btn {
+            display: block;
+            text-align: center;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 12px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .price-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Подвал */
         footer {
             background: #080808;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -233,7 +317,6 @@
             opacity: 0.7;
         }
 
-        /* Блок мессенджеров */
         .messenger-buttons {
             display: flex;
             justify-content: center;
@@ -317,6 +400,12 @@
         }
 
         /* Адаптив для телефонов */
+        @media (max-width: 900px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             header {
                 padding: 15px 20px;
@@ -327,7 +416,7 @@
             .hero {
                 padding: 110px 20px 40px 20px;
             }
-            .gallery-section {
+            .gallery-section, .pricing-section {
                 padding: 0 20px 60px 20px;
             }
             .portfolio-grid {
@@ -378,112 +467,164 @@
             
             <!-- СЕМЬЯ (6 штук) -->
             <div class="portfolio-item family" data-category="family">
-                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1000&q=85" alt="Семья 1">
+                <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&auto=format&fit=crop&q=80" alt="Семья 1">
                 <div class="portfolio-info"><h3>Теплый вечер</h3><span>Семья</span></div>
             </div>
             <div class="portfolio-item family" data-category="family">
-                <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=1000&q=85" alt="Семья 2">
+                <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80" alt="Семья 2">
                 <div class="portfolio-info"><h3>Вместе дома</h3><span>Семья</span></div>
             </div>
             <div class="portfolio-item family" data-category="family">
-                <img src="https://images.unsplash.com/photo-1543333523-1d525cb732b3?auto=format&fit=crop&w=1000&q=85" alt="Семья 3">
+                <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&auto=format&fit=crop&q=80" alt="Семья 3">
                 <div class="portfolio-info"><h3>Прогулка в парке</h3><span>Семья</span></div>
             </div>
             <div class="portfolio-item family" data-category="family">
-                <img src="https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?auto=format&fit=crop&w=1000&q=85" alt="Семья 4">
+                <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&auto=format&fit=crop&q=80" alt="Семья 4">
                 <div class="portfolio-info"><h3>Счастье в мелочах</h3><span>Семья</span></div>
             </div>
             <div class="portfolio-item family" data-category="family">
-                <img src="https://images.unsplash.com/photo-1581579438747-1dc8d17ccce4?auto=format&fit=crop&w=1000&q=85" alt="Семья 5">
+                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&auto=format&fit=crop&q=80" alt="Семья 5">
                 <div class="portfolio-info"><h3>Выходные за городом</h3><span>Семья</span></div>
             </div>
             <div class="portfolio-item family" data-category="family">
-                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1000&q=85" alt="Семья 6">
+                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&auto=format&fit=crop&q=80" alt="Семья 6">
                 <div class="portfolio-info"><h3>Улыбки детей</h3><span>Семья</span></div>
             </div>
 
             <!-- ШКОЛА (6 штук) -->
             <div class="portfolio-item school" data-category="school">
-                <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=85" alt="Школа 1">
+                <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&auto=format&fit=crop&q=80" alt="Школа 1">
                 <div class="portfolio-info"><h3>Наш дружный класс</h3><span>Школа</span></div>
             </div>
             <div class="portfolio-item school" data-category="school">
-                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1000&q=85" alt="Школа 2">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&auto=format&fit=crop&q=80" alt="Школа 2">
                 <div class="portfolio-info"><h3>Урок литературы</h3><span>Школа</span></div>
             </div>
             <div class="portfolio-item school" data-category="school">
-                <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1000&q=85" alt="Школа 3">
+                <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&auto=format&fit=crop&q=80" alt="Школа 3">
                 <div class="portfolio-info"><h3>Перемена</h3><span>Школа</span></div>
             </div>
             <div class="portfolio-item school" data-category="school">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=85" alt="Школа 4">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=80" alt="Школа 4">
                 <div class="portfolio-info"><h3>Школьные годы</h3><span>Школа</span></div>
             </div>
             <div class="portfolio-item school" data-category="school">
-                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=85" alt="Школа 5">
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&auto=format&fit=crop&q=80" alt="Школа 5">
                 <div class="portfolio-info"><h3>Первый звонок</h3><span>Школа</span></div>
             </div>
             <div class="portfolio-item school" data-category="school">
-                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1000&q=85" alt="Школа 6">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop&q=80" alt="Школа 6">
                 <div class="portfolio-info"><h3>В классе</h3><span>Школа</span></div>
             </div>
 
             <!-- LOVE STORY (6 штук) -->
             <div class="portfolio-item lovestory" data-category="lovestory">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85" alt="Love 1">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80" alt="Love 1">
                 <div class="portfolio-info"><h3>История любви</h3><span>Love Story</span></div>
             </div>
             <div class="portfolio-item lovestory" data-category="lovestory">
-                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1000&q=85" alt="Love 2">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&auto=format&fit=crop&q=80" alt="Love 2">
                 <div class="portfolio-info"><h3>Предложение</h3><span>Love Story</span></div>
             </div>
             <div class="portfolio-item lovestory" data-category="lovestory">
-                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=85" alt="Love 3">
+                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&auto=format&fit=crop&q=80" alt="Love 3">
                 <div class="portfolio-info"><h3>Закат на двоих</h3><span>Love Story</span></div>
             </div>
             <div class="portfolio-item lovestory" data-category="lovestory">
-                <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1000&q=85" alt="Love 4">
+                <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&auto=format&fit=crop&q=80" alt="Love 4">
                 <div class="portfolio-info"><h3>Нежные моменты</h3><span>Love Story</span></div>
             </div>
             <div class="portfolio-item lovestory" data-category="lovestory">
-                <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=85" alt="Love 5">
+                <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&auto=format&fit=crop&q=80" alt="Love 5">
                 <div class="portfolio-info"><h3>Вместе навсегда</h3><span>Love Story</span></div>
             </div>
             <div class="portfolio-item lovestory" data-category="lovestory">
-                <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=1000&q=85" alt="Love 6">
+                <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=800&auto=format&fit=crop&q=80" alt="Love 6">
                 <div class="portfolio-info"><h3>Огонь внутри</h3><span>Love Story</span></div>
             </div>
 
             <!-- ПОРТРЕТ (6 штук) -->
             <div class="portfolio-item portrait" data-category="portrait">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85" alt="Portrait 1">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80" alt="Portrait 1">
                 <div class="portfolio-info"><h3>Взгляд</h3><span>Портрет</span></div>
             </div>
             <div class="portfolio-item portrait" data-category="portrait">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=85" alt="Portrait 2">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80" alt="Portrait 2">
                 <div class="portfolio-info"><h3>Характер</h3><span>Портрет</span></div>
             </div>
             <div class="portfolio-item portrait" data-category="portrait">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1000&q=85" alt="Portrait 3">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80" alt="Portrait 3">
                 <div class="portfolio-info"><h3>Студийный свет</h3><span>Портрет</span></div>
             </div>
             <div class="portfolio-item portrait" data-category="portrait">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=85" alt="Portrait 4">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&auto=format&fit=crop&q=80" alt="Portrait 4">
                 <div class="portfolio-info"><h3>Естественность</h3><span>Портрет</span></div>
             </div>
             <div class="portfolio-item portrait" data-category="portrait">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85" alt="Portrait 5">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&auto=format&fit=crop&q=80" alt="Portrait 5">
                 <div class="portfolio-info"><h3>Эмоция</h3><span>Портрет</span></div>
             </div>
             <div class="portfolio-item portrait" data-category="portrait">
-                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=85" alt="Portrait 6">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&auto=format&fit=crop&q=80" alt="Portrait 6">
                 <div class="portfolio-info"><h3>Гармония</h3><span>Портрет</span></div>
             </div>
 
         </div>
     </section>
 
-    <!-- Подвал с номером и мессенджерами -->
+    <!-- Блок цен -->
+    <section class="pricing-section">
+        <h2 class="pricing-title">Стоимость услуг</h2>
+        <div class="pricing-grid">
+            
+            <div class="price-card">
+                <div>
+                    <h3>Минимум</h3>
+                    <div class="price">5 000 ₽</div>
+                    <ul>
+                        <li>Длительность: 1 час</li>
+                        <li>15 фото в ретуши</li>
+                        <li>Все удачные кадры в цветокоррекции</li>
+                        <li>Готовность до 7 дней</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/79991234567" target="_blank" class="price-btn">Заказать</a>
+            </div>
+
+            <div class="price-card">
+                <div>
+                    <h3>Стандарт (Семья / Школа)</h3>
+                    <div class="price">8 500 ₽</div>
+                    <ul>
+                        <li>Длительность: до 2 часов</li>
+                        <li>35 фото в глубокой ретуши</li>
+                        <li>Все исходники (от 150 шт.)</li>
+                        <li>Помощь в позировании и выборе локации</li>
+                        <li>Готовность до 5 дней</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/79991234567" target="_blank" class="price-btn">Заказать</a>
+            </div>
+
+            <div class="price-card">
+                <div>
+                    <h3>Премиум / Love Story</h3>
+                    <div class="price">12 000 ₽</div>
+                    <ul>
+                        <li>Длительность: до 3 часов</li>
+                        <li>50+ фото в ретуши</li>
+                        <li>Авторская обработка каждого кадра</li>
+                        <li>Клип из лучших моментов для соцсетей</li>
+                        <li>Приоритетная готовность за 3 дня</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/79991234567" target="_blank" class="price-btn">Заказать</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Подвал -->
     <footer>
         <div class="footer-content">
             <h2>Забронировать съёмку</h2>
