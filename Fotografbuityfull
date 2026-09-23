@@ -1,1 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALEXANDER KUZNETSOV — Photographer</title>
+    <style>
+        :root {
+            --bg-color: #0c0c0c;
+            --text-color: #f3f3f3;
+            --muted-color: #888888;
+            --accent-color: #e5e5e5;
+            --transition: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Шапка */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            background: rgba(12, 12, 12, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-decoration: none;
+            color: var(--text-color);
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--muted-color);
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-color);
+        }
+
+        /* Главный экран (Hero) */
+        .hero {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 0 50px;
+            padding-top: 80px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            padding-right: 50px;
+            animation: fadeIn 1.2s var(--transition) forwards;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(40px, 5vw, 80px);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            font-family: serif;
+        }
+
+        .hero-content p {
+            color: var(--muted-color);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 400px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.4s var(--transition);
+        }
+
+        .btn:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+            border-color: var(--text-color);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 70vh;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            animation: scaleUp 1.4s var(--transition) forwards;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s var(--transition);
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.04);
+        }
+
+        /* Секция галереи */
+        .gallery-section {
+            padding: 100px 50px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--muted-color);
+            margin-bottom: 50px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+            background: #151515;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s var(--transition), opacity 0.6s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.03);
+            opacity: 0.85;
+        }
+
+        .portfolio-info {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .portfolio-info h3 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 5px;
+            font-family: serif;
+        }
+
+        .portfolio-info span {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--muted-color);
+            text-transform: uppercase;
+        }
+
+        /* Лайтбокс */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox img {
+            max-width: 85%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 2px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Адаптив для мобильных устройств */
+        @media (max-width: 900px) {
+            header {
+                padding: 20px;
+            }
+
+            nav {
+                display: none; /* Можно заменить на мобильное меню при желании */
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                height: auto;
+                padding: 120px 20px 60px 20px;
+                text-align: left;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+
+            .hero-image {
+                height: 450px;
+            }
+
+            .gallery-section {
+                padding: 60px 20px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .portfolio-item img {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <a href="#" class="logo">A. Kuznetsov</a>
+        <nav>
+            <a href="#work">Works</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Visual Stories & Portraiture</h1>
+            <p>Запечатлеваю моменты, эмоции и эстетику через объектив камеры. Коммерческая и художественная фотография.</p>
+            <a href="#work" class="btn">Смотреть работы</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85" alt="Featured Work">
+        </div>
+    </section>
+
+    <!-- Галерея -->
+    <section class="gallery-section" id="work">
+        <div class="section-title">Selected Projects</div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85" alt="Editorial">
+                <div class="portfolio-info">
+                    <h3>Silent Hours</h3>
+                    <span>Editorial</span>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=85" alt="Nature">
+                <div class="portfolio-info">
+                    <h3>Nordic Monochrome</h3>
+                    <span>Nature / Landscape</span>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=85" alt="Portraits">
+                <div class="portfolio-info">
+                    <h3>Inner Light</h3>
+                    <span>Portraits</span>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=85" alt="Studio">
+                <div class="portfolio-info">
+                    <h3>Chiaroscuro</h3>
+                    <span>Studio Work</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Лайтбокс -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img id="lightboxImg" src="" alt="Zoomed">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const images = document.querySelectorAll('.portfolio-item img, .hero-image img');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
 
