@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALEXANDER KUZNETSOV — Photographer</title>
+    <title>Елена Смирнова — Фотограф</title>
     <style>
         :root {
             --bg-color: #0c0c0c;
             --text-color: #f3f3f3;
             --muted-color: #888888;
-            --accent-color: #e5e5e5;
+            --accent-color: #ffffff;
             --transition: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -36,145 +36,133 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 50px;
-            background: rgba(12, 12, 12, 0.8);
+            padding: 25px 40px;
+            background: rgba(12, 12, 12, 0.85);
             backdrop-filter: blur(12px);
             z-index: 100;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        .logo-block {
+            display: flex;
+            flex-direction: column;
+        }
+
         .logo {
             font-size: 16px;
             font-weight: 600;
-            letter-spacing: 4px;
-            text-decoration: none;
-            color: var(--text-color);
-            text-transform: uppercase;
-        }
-
-        nav {
-            display: flex;
-            gap: 35px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--muted-color);
-            font-size: 13px;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
+            text-decoration: none;
             color: var(--text-color);
+            text-transform: uppercase;
         }
 
-        /* Главный экран (Hero) */
+        .logo-sub {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--muted-color);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .header-phone {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .header-phone:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Главный экран */
         .hero {
-            height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            padding: 0 50px;
-            padding-top: 80px;
-            max-width: 1600px;
+            padding: 140px 40px 60px 40px;
+            max-width: 1400px;
             margin: 0 auto;
+            text-align: center;
         }
 
-        .hero-content {
-            padding-right: 50px;
-            animation: fadeIn 1.2s var(--transition) forwards;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(40px, 5vw, 80px);
+        .hero h1 {
+            font-size: clamp(32px, 4vw, 60px);
             font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
+            margin-bottom: 15px;
             font-family: serif;
         }
 
-        .hero-content p {
+        .hero p {
             color: var(--muted-color);
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Переключатель категорий (Фильтры) */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 0 20px;
             margin-bottom: 40px;
-            max-width: 400px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-color);
-            text-decoration: none;
+        .cat-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--muted-color);
+            padding: 10px 22px;
+            border-radius: 30px;
             font-size: 12px;
-            letter-spacing: 3px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            border-radius: 50px;
-            transition: all 0.4s var(--transition);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .btn:hover {
+        .cat-btn:hover, .cat-btn.active {
             background: var(--text-color);
             color: var(--bg-color);
             border-color: var(--text-color);
         }
 
-        .hero-image {
-            width: 100%;
-            height: 70vh;
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            animation: scaleUp 1.4s var(--transition) forwards;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s var(--transition);
-        }
-
-        .hero-image:hover img {
-            transform: scale(1.04);
-        }
-
-        /* Секция галереи */
+        /* Сетка галереи */
         .gallery-section {
-            padding: 100px 50px;
-            max-width: 1600px;
+            padding: 0 40px 100px 40px;
+            max-width: 1400px;
             margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 14px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--muted-color);
-            margin-bottom: 50px;
         }
 
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            gap: 30px;
         }
 
         .portfolio-item {
             position: relative;
             overflow: hidden;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             background: #151515;
+            display: none; /* Скрыты по умолчанию, включаются через JS */
+        }
+
+        .portfolio-item.visible {
+            display: block;
+            animation: fadeIn 0.6s ease forwards;
         }
 
         .portfolio-item img {
             width: 100%;
-            height: 600px;
+            height: 500px;
             object-fit: cover;
             display: block;
             transition: transform 0.6s var(--transition), opacity 0.6s ease;
@@ -187,24 +175,61 @@
 
         .portfolio-info {
             position: absolute;
-            bottom: 30px;
-            left: 30px;
+            bottom: 25px;
+            left: 25px;
             z-index: 2;
             pointer-events: none;
         }
 
         .portfolio-info h3 {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 400;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             font-family: serif;
         }
 
         .portfolio-info span {
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 2px;
             color: var(--muted-color);
             text-transform: uppercase;
+        }
+
+        /* Подвал с номером телефона */
+        footer {
+            background: #080808;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .footer-content h2 {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            font-family: serif;
+        }
+
+        .footer-content p {
+            color: var(--muted-color);
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .big-phone {
+            display: inline-block;
+            font-size: clamp(24px, 3vw, 36px);
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 300;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 5px;
+            transition: opacity 0.3s;
+        }
+
+        .big-phone:hover {
+            opacity: 0.7;
         }
 
         /* Лайтбокс */
@@ -233,74 +258,46 @@
             max-width: 85%;
             max-height: 85vh;
             object-fit: contain;
-            border-radius: 2px;
+            border-radius: 4px;
         }
 
         .lightbox-close {
             position: absolute;
-            top: 40px;
-            right: 40px;
+            top: 30px;
+            right: 30px;
             color: #fff;
-            font-size: 30px;
+            font-size: 35px;
             cursor: pointer;
             background: none;
             border: none;
             opacity: 0.7;
-            transition: opacity 0.3s;
         }
 
-        .lightbox-close:hover {
-            opacity: 1;
-        }
-
-        /* Анимации */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes scaleUp {
-            from { opacity: 0; transform: scale(0.97); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        /* Адаптив для мобильных устройств */
-        @media (max-width: 900px) {
+        /* Адаптив для телефонов */
+        @media (max-width: 768px) {
             header {
-                padding: 20px;
+                padding: 15px 20px;
             }
-
-            nav {
-                display: none; /* Можно заменить на мобильное меню при желании */
+            .header-phone {
+                display: none; /* прячем мелкую кнопку в шапке на мобилках, снизу будет большая */
             }
-
             .hero {
-                grid-template-columns: 1fr;
-                height: auto;
-                padding: 120px 20px 60px 20px;
-                text-align: left;
+                padding: 110px 20px 40px 20px;
             }
-
-            .hero-content {
-                padding-right: 0;
-                margin-bottom: 40px;
-            }
-
-            .hero-image {
-                height: 450px;
-            }
-
             .gallery-section {
-                padding: 60px 20px;
+                padding: 0 20px 60px 20px;
             }
-
             .portfolio-grid {
                 grid-template-columns: 1fr;
-                gap: 25px;
+                gap: 20px;
             }
-
             .portfolio-item img {
-                height: 400px;
+                height: 380px;
             }
         }
     </style>
@@ -309,60 +306,146 @@
 
     <!-- Шапка -->
     <header>
-        <a href="#" class="logo">A. Kuznetsov</a>
-        <nav>
-            <a href="#work">Works</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <div class="logo-block">
+            <a href="#" class="logo">Елена Смирнова</a>
+            <span class="logo-sub">Семейный и школьный фотограф</span>
+        </div>
+        <a href="tel:+79991234567" class="header-phone">+7 (999) 123-45-67</a>
     </header>
 
-    <!-- Главный экран -->
+    <!-- Главный блок -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Visual Stories & Portraiture</h1>
-            <p>Запечатлеваю моменты, эмоции и эстетику через объектив камеры. Коммерческая и художественная фотография.</p>
-            <a href="#work" class="btn">Смотреть работы</a>
-        </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85" alt="Featured Work">
+        <h1>Сохраняю лучшие моменты жизни</h1>
+        <p>Живые эмоции, искренние улыбки и теплая атмосфера в каждом кадре.</p>
+    </section>
+
+    <!-- Кнопки категорий -->
+    <div class="categories">
+        <button class="cat-btn active" onclick="filterCategory('family')">Семья</button>
+        <button class="cat-btn" onclick="filterCategory('school')">Школа</button>
+        <button class="cat-btn" onclick="filterCategory('lovestory')">Love Story</button>
+        <button class="cat-btn" onclick="filterCategory('portrait')">Портрет</button>
+    </div>
+
+    <!-- Галерея (по 6 фото на каждую категорию) -->
+    <section class="gallery-section">
+        <div class="portfolio-grid" id="grid">
+            
+            <!-- СЕМЬЯ (6 штук) -->
+            <div class="portfolio-item family" data-category="family">
+                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1000&q=85" alt="Семья 1">
+                <div class="portfolio-info"><h3>Теплый вечер</h3><span>Семья</span></div>
+            </div>
+            <div class="portfolio-item family" data-category="family">
+                <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=1000&q=85" alt="Семья 2">
+                <div class="portfolio-info"><h3>Вместе дома</h3><span>Семья</span></div>
+            </div>
+            <div class="portfolio-item family" data-category="family">
+                <img src="https://images.unsplash.com/photo-1543333523-1d525cb732b3?auto=format&fit=crop&w=1000&q=85" alt="Семья 3">
+                <div class="portfolio-info"><h3>Прогулка в парке</h3><span>Семья</span></div>
+            </div>
+            <div class="portfolio-item family" data-category="family">
+                <img src="https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?auto=format&fit=crop&w=1000&q=85" alt="Семья 4">
+                <div class="portfolio-info"><h3>Счастье в мелочах</h3><span>Семья</span></div>
+            </div>
+            <div class="portfolio-item family" data-category="family">
+                <img src="https://images.unsplash.com/photo-1581579438747-1dc8d17ccce4?auto=format&fit=crop&w=1000&q=85" alt="Семья 5">
+                <div class="portfolio-info"><h3>Выходные за городом</h3><span>Семья</span></div>
+            </div>
+            <div class="portfolio-item family" data-category="family">
+                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1000&q=85" alt="Семья 6">
+                <div class="portfolio-info"><h3>Улыбки детей</h3><span>Семья</span></div>
+            </div>
+
+            <!-- ШКОЛА (6 штук) -->
+            <div class="portfolio-item school" data-category="school">
+                <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=85" alt="Школа 1">
+                <div class="portfolio-info"><h3>Наш дружный класс</h3><span>Школа</span></div>
+            </div>
+            <div class="portfolio-item school" data-category="school">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1000&q=85" alt="Школа 2">
+                <div class="portfolio-info"><h3>Урок литературы</h3><span>Школа</span></div>
+            </div>
+            <div class="portfolio-item school" data-category="school">
+                <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1000&q=85" alt="Школа 3">
+                <div class="portfolio-info"><h3>Перемена</h3><span>Школа</span></div>
+            </div>
+            <div class="portfolio-item school" data-category="school">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=85" alt="Школа 4">
+                <div class="portfolio-info"><h3>Школьные годы</h3><span>Школа</span></div>
+            </div>
+            <div class="portfolio-item school" data-category="school">
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=85" alt="Школа 5">
+                <div class="portfolio-info"><h3>Первый звонок</h3><span>Школа</span></div>
+            </div>
+            <div class="portfolio-item school" data-category="school">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1000&q=85" alt="Школа 6">
+                <div class="portfolio-info"><h3>В классе</h3><span>Школа</span></div>
+            </div>
+
+            <!-- LOVE STORY (6 штук) -->
+            <div class="portfolio-item lovestory" data-category="lovestory">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85" alt="Love 1">
+                <div class="portfolio-info"><h3>История любви</h3><span>Love Story</span></div>
+            </div>
+            <div class="portfolio-item lovestory" data-category="lovestory">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1000&q=85" alt="Love 2">
+                <div class="portfolio-info"><h3>Предложение</h3><span>Love Story</span></div>
+            </div>
+            <div class="portfolio-item lovestory" data-category="lovestory">
+                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=85" alt="Love 3">
+                <div class="portfolio-info"><h3>Закат на двоих</h3><span>Love Story</span></div>
+            </div>
+            <div class="portfolio-item lovestory" data-category="lovestory">
+                <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1000&q=85" alt="Love 4">
+                <div class="portfolio-info"><h3>Нежные моменты</h3><span>Love Story</span></div>
+            </div>
+            <div class="portfolio-item lovestory" data-category="lovestory">
+                <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=85" alt="Love 5">
+                <div class="portfolio-info"><h3>Вместе навсегда</h3><span>Love Story</span></div>
+            </div>
+            <div class="portfolio-item lovestory" data-category="lovestory">
+                <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=1000&q=85" alt="Love 6">
+                <div class="portfolio-info"><h3>Огонь внутри</h3><span>Love Story</span></div>
+            </div>
+
+            <!-- ПОРТРЕТ (6 штук) -->
+            <div class="portfolio-item portrait" data-category="portrait">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85" alt="Portrait 1">
+                <div class="portfolio-info"><h3>Взгляд</h3><span>Портрет</span></div>
+            </div>
+            <div class="portfolio-item portrait" data-category="portrait">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=85" alt="Portrait 2">
+                <div class="portfolio-info"><h3>Характер</h3><span>Портрет</span></div>
+            </div>
+            <div class="portfolio-item portrait" data-category="portrait">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1000&q=85" alt="Portrait 3">
+                <div class="portfolio-info"><h3>Студийный свет</h3><span>Портрет</span></div>
+            </div>
+            <div class="portfolio-item portrait" data-category="portrait">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=85" alt="Portrait 4">
+                <div class="portfolio-info"><h3>Естественность</h3><span>Портрет</span></div>
+            </div>
+            <div class="portfolio-item portrait" data-category="portrait">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85" alt="Portrait 5">
+                <div class="portfolio-info"><h3>Эмоция</h3><span>Портрет</span></div>
+            </div>
+            <div class="portfolio-item portrait" data-category="portrait">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=85" alt="Portrait 6">
+                <div class="portfolio-info"><h3>Гармония</h3><span>Портрет</span></div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Галерея -->
-    <section class="gallery-section" id="work">
-        <div class="section-title">Selected Projects</div>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85" alt="Editorial">
-                <div class="portfolio-info">
-                    <h3>Silent Hours</h3>
-                    <span>Editorial</span>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=85" alt="Nature">
-                <div class="portfolio-info">
-                    <h3>Nordic Monochrome</h3>
-                    <span>Nature / Landscape</span>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=85" alt="Portraits">
-                <div class="portfolio-info">
-                    <h3>Inner Light</h3>
-                    <span>Portraits</span>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=85" alt="Studio">
-                <div class="portfolio-info">
-                    <h3>Chiaroscuro</h3>
-                    <span>Studio Work</span>
-                </div>
-            </div>
+    <!-- Подвал с номером телефона -->
+    <footer>
+        <div class="footer-content">
+            <h2>Забронировать съёмку</h2>
+            <p>Свяжитесь со мной любым удобным способом или позвоните напрямую:</p>
+            <a href="tel:+79991234567" class="big-phone">+7 (999) 123-45-67</a>
         </div>
-    </section>
+    </footer>
 
     <!-- Лайтбокс -->
     <div class="lightbox" id="lightbox">
@@ -371,10 +454,42 @@
     </div>
 
     <script>
+        // Функция фильтрации категорий
+        function filterCategory(category) {
+            // Переключаем активную кнопку
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Показываем/скрываем нужные фото
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                if (item.classList.contains(category)) {
+                    item.classList.add('visible');
+                } else {
+                    item.classList.remove('visible');
+                }
+            });
+        }
+
+        // При загрузке страницы включаем категорию "Семья" по умолчанию
+        window.addEventListener('DOMContentLoaded', () => {
+            filterCategoryInitial('family');
+        });
+
+        function filterCategoryInitial(category) {
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                if (item.classList.contains(category)) {
+                    item.classList.add('visible');
+                } else {
+                    item.classList.remove('visible');
+                }
+            });
+        }
+
+        // Лайтбокс для картинок
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxClose = document.getElementById('lightboxClose');
-        const images = document.querySelectorAll('.portfolio-item img, .hero-image img');
+        const images = document.querySelectorAll('.portfolio-item img');
 
         images.forEach(img => {
             img.addEventListener('click', () => {
@@ -395,4 +510,3 @@
     </script>
 </body>
 </html>
-
